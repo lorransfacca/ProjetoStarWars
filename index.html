@@ -198,7 +198,11 @@
           </div>
 
           <div class="form-group d-flex justify-content-end">
-            <button class="btn btn-outline-success">Enviar</button>
+            <button class="btn btn-outline-success" onclick="validar()">Enviar</button>
+          </div>
+          
+          <div class="alert alert-success" hidd id="Formulario-Enviado">
+            Seu Comentário Foi Enviado com Sucesso!
           </div>
         </form>
       </div>
@@ -231,8 +235,25 @@
     let mes=data.getMonth()+1;
     let ano=data.getFullYear();
 </script>
+  <script>
+    function validar(){
+        let nome= document.getElementById('nome').value;
+        let email= document.getElementById('email').value;
+        let data= document.getElementById('data').value;
+        let horas= document.getElementById('horas').value;
+        let comentario= document.getElementById('comentario').value;
+        if(nome == "", email == "", data == "", horas == "", comentario == ""){
+            document.getElementById('erro').innerHTML = "Campo Obrigatorio*";
+            document.getElementById('erro').focus();
+            return false;
+        }else{
+          document.getRlementById('erro').innerHTML = "";
+        }
+    }
+</script>  
 
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+  <script src="js/validacoes.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
